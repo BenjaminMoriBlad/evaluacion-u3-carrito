@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <rect width="120" height="120" rx="20" fill="#F0F4F8"/>
+  <!-- Keyboard base -->
+  <rect x="18" y="38" width="84" height="44" rx="8" fill="#1B365D"/>
+  <!-- Key rows -->
+  <!-- Row 1 -->
+  <rect x="24" y="44" width="12" height="7" rx="2" fill="#5568FE"/>
+  <rect x="39" y="44" width="12" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="54" y="44" width="12" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="69" y="44" width="12" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="84" y="44" width="12" height="7" rx="2" fill="#5568FE"/>
+  <!-- Row 2 -->
+  <rect x="24" y="54" width="14" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="41" y="54" width="12" height="7" rx="2" fill="#5568FE"/>
+  <rect x="56" y="54" width="12" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="71" y="54" width="12" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="86" y="54" width="10" height="7" rx="2" fill="#FFFFFF"/>
+  <!-- Row 3 - Spacebar -->
+  <rect x="24" y="64" width="16" height="7" rx="2" fill="#5568FE"/>
+  <rect x="43" y="64" width="34" height="7" rx="2" fill="#FFFFFF"/>
+  <rect x="80" y="64" width="16" height="7" rx="2" fill="#5568FE"/>
+</svg>

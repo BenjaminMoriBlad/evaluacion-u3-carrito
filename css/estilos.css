@@ -1,0 +1,365 @@
+/* ==========================================================================
+   EVALUACIÓN U3 - UNIDAD 3: VUE JS
+   Hoja de Estilos Personalizada (CSS3 con Custom Properties)
+   Paleta institucional y contraste según estándares de la industria
+   ========================================================================== */
+
+:root {
+  --bg-page: #FAFAFA;
+  --surface-card: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-muted: #4A5568;
+  --border-subtle: #E2E8F0;
+  --brand-primary: #1B365D;
+  --brand-accent: #5568FE;
+  --brand-accent-hover: #4052e6;
+  --danger-color: #E53E3E;
+  --danger-hover: #C53030;
+  --success-color: #2F855A;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 10px 15px -3px rgba(85, 104, 254, 0.12), 0 4px 6px -2px rgba(85, 104, 254, 0.08);
+  --radius-card: 14px;
+  --radius-btn: 10px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Configuración General */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header Académico y Barra de Título */
+.app-header {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #0F233E 100%);
+  color: #FFFFFF;
+  padding: 2.2rem 1rem;
+  border-bottom: 4px solid var(--brand-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.app-header h1 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.badge-tag {
+  background-color: rgba(85, 104, 254, 0.25);
+  border: 1px solid rgba(85, 104, 254, 0.6);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* Contenedor de Columna / Panel Principal */
+.panel-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border-subtle);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.panel-title {
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tarjetas de Producto */
+.product-item {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+.product-item:hover {
+  border-color: var(--brand-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Miniatura de Imagen de Producto */
+.product-thumbnail-box {
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+  border-radius: 10px;
+  background-color: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.product-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Información de Producto */
+.product-info {
+  flex-grow: 1;
+}
+
+.product-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.product-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stock-indicator {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stock-ok {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+
+.stock-low {
+  background-color: #FEF08A;
+  color: #854D0E;
+}
+
+.stock-exhausted {
+  background-color: #FDE8E8;
+  color: #9B1C1C;
+}
+
+/* Botones de Acción */
+.btn-add-cart {
+  background-color: var(--brand-accent);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-add-cart:hover:not(:disabled) {
+  background-color: var(--brand-accent-hover);
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(85, 104, 254, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-add-cart:disabled {
+  background-color: #CBD5E1;
+  color: #64748B;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.btn-remove-cart {
+  background-color: #FFF5F5;
+  color: var(--danger-color);
+  border: 1px solid #FED7D7;
+  border-radius: var(--radius-btn);
+  padding: 0.55rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-remove-cart:hover {
+  background-color: var(--danger-color);
+  color: #FFFFFF;
+  border-color: var(--danger-color);
+  box-shadow: 0 4px 10px rgba(229, 62, 62, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Panel de Total a Pagar (Bajo columna izquierda) */
+.total-pay-box {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #203B64 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-card);
+  padding: 1.15rem 1.4rem;
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.total-pay-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.total-pay-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #A3E635; /* Verde llamativo con excelente contraste */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Estado de Carrito Vacío */
+.empty-cart-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+
+.empty-cart-icon {
+  font-size: 3.5rem;
+  color: #CBD5E1;
+  margin-bottom: 0.75rem;
+}
+
+/* Barra de Estado de Sesión (TTL 30 min) */
+.session-status-bar {
+  background-color: #EDF2F7;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.session-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  box-shadow: 0 0 0 0 rgba(47, 133, 90, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 133, 90, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(47, 133, 90, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 133, 90, 0);
+  }
+}
+
+.btn-clear-cart {
+  background: transparent;
+  border: none;
+  color: var(--danger-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.btn-clear-cart:hover {
+  background-color: rgba(229, 62, 62, 0.1);
+}
+
+/* Footer Académico */
+.app-footer {
+  margin-top: auto;
+  background-color: #FFFFFF;
+  border-top: 1px solid var(--border-subtle);
+  padding: 1.25rem 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* Responsive Utilities */
+@media (max-width: 576px) {
+  .product-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .product-info {
+    width: 100%;
+  }
+  .btn-add-cart, .btn-remove-cart {
+    width: 100%;
+    justify-content: center;
+  }
+  .total-pay-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .session-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
