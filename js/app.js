@@ -19,12 +19,12 @@ createApp({
     return {
       // 1. Catálogo oficial e inmutable según la rúbrica y especificación
       productos: [
-        { id: 1, nombre: 'Audifono', precio: 30000, stock: 3, imagen: 'img/audifono.svg' },
-        { id: 2, nombre: 'Mouse', precio: 20000, stock: 5, imagen: 'img/mouse.svg' },
-        { id: 3, nombre: 'Teclado', precio: 15000, stock: 10, imagen: 'img/teclado.svg' },
-        { id: 4, nombre: 'Gabinete', precio: 35000, stock: 4, imagen: 'img/gabinete.svg' },
-        { id: 5, nombre: 'Pantalla', precio: 175000, stock: 3, imagen: 'img/pantalla.svg' },
-        { id: 6, nombre: 'Silla', precio: 150000, stock: 2, imagen: 'img/silla.svg' }
+        { id: 1, nombre: 'Audifono', precio: 30000, stock: 3, imagen: 'img/audifono.jpg' },
+        { id: 2, nombre: 'Mouse', precio: 20000, stock: 5, imagen: 'img/mouse.jpg' },
+        { id: 3, nombre: 'Teclado', precio: 15000, stock: 10, imagen: 'img/teclado.jpg' },
+        { id: 4, nombre: 'Gabinete', precio: 35000, stock: 4, imagen: 'img/gabinete.jpg' },
+        { id: 5, nombre: 'Pantalla', precio: 175000, stock: 3, imagen: 'img/pantalla.jpg' },
+        { id: 6, nombre: 'Silla', precio: 150000, stock: 2, imagen: 'img/silla.jpg' }
       ],
 
       // 2. Estado reactivo del carrito de compras
@@ -152,6 +152,32 @@ createApp({
     formatearPrecio(valor) {
       const num = Number(valor) || 0;
       return num.toLocaleString('es-CL');
+    },
+
+    /**
+     * Controlador de respaldo (@error) para imágenes de productos.
+     * Garantiza que nunca se visualicen imágenes rotas cargando fotos de hardware reales.
+     * @param {Event} event - Evento de error del elemento <img>
+     * @param {string} nombreProducto - Nombre del producto para resolver el fallback
+     */
+    manejarErrorImagen(event, nombreProducto) {
+      const fotosRespaldo = {
+        'Audifono': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80',
+        'Mouse': 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&q=80',
+        'Teclado': 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&q=80',
+        'Gabinete': 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&q=80',
+        'Pantalla': 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&q=80',
+        'Silla': 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=300&q=80'
+      };
+
+      const target = event.target;
+      if (!target.dataset.fallbackFase) {
+        target.dataset.fallbackFase = 'remota';
+        target.src = fotosRespaldo[nombreProducto] || `img/${nombreProducto.toLowerCase()}.svg`;
+      } else if (target.dataset.fallbackFase === 'remota') {
+        target.dataset.fallbackFase = 'svg';
+        target.src = `img/${nombreProducto.toLowerCase()}.svg`;
+      }
     },
 
     /**

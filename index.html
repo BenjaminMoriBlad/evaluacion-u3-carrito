@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Evaluación U3 - Unidad 3: Vue JS | Carrito de Compras</title>
+  <title>EvaU3 &mdash; Setup & Hardware | Carrito de Compras</title>
 
   <!-- Bootstrap 5.3 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -20,17 +20,43 @@
   <!-- Contenedor Raíz de la Aplicación Vue -->
   <div id="app">
 
-    <!-- Encabezado Institucional / Académico -->
+    <!-- Encabezado Comercial: EvaU3 con Marquesina Animada Continua -->
     <header class="app-header">
       <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-          <div>
-            <h1 class="h3 mb-1"><i class="bi bi-cart3 me-2"></i>Evaluación U3 - Unidad 3: Vue JS</h1>
-            <p class="mb-0 text-white-50 small">Asignatura: Programación Front End &bull; Trabajo Individual Universitario</p>
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+          <div class="app-brand">
+            <div class="brand-logo-icon">
+              <i class="bi bi-cpu-fill"></i>
+            </div>
+            <div>
+              <h1 class="h3 mb-0">EvaU3 <span class="brand-accent">&mdash; Setup & Hardware</span></h1>
+              <p class="brand-subtitle">Tecnología de alto rendimiento &bull; Componentes y periféricos gaming</p>
+            </div>
           </div>
-          <div>
-            <span class="badge-tag"><i class="bi bi-shield-check me-1"></i>Vue.js 3 &bull; Bootstrap 5</span>
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-dark border border-secondary text-light px-3 py-2">
+              <i class="bi bi-shield-check text-success me-1"></i>Compra 100% Protegida
+            </span>
           </div>
+        </div>
+      </div>
+
+      <!-- Marquesina Animada Continua de Promociones y Destacados -->
+      <div class="header-marquee" aria-label="Avisos y promociones de la tienda">
+        <div class="marquee-track">
+          <!-- Pistas duplicadas para scroll continuo infinito y fluido -->
+          <span class="marquee-item"><i class="bi bi-lightning-charge-fill"></i> <strong>Despacho Express:</strong> Entregas en 24h para Santiago y envíos a todo Chile</span>
+          <span class="marquee-item"><i class="bi bi-shield-lock-fill"></i> <strong>Reserva Asegurada:</strong> Stock reservado en tu carrito por 30 minutos</span>
+          <span class="marquee-item"><i class="bi bi-award-fill"></i> <strong>Garantía Oficial:</strong> 12 meses de garantía directa en todo el catálogo</span>
+          <span class="marquee-item"><i class="bi bi-credit-card-2-front-fill"></i> <strong>Cuotas Sin Interés:</strong> Hasta 12 cuotas con tus tarjetas bancarias</span>
+          <span class="marquee-item"><i class="bi bi-check-circle-fill"></i> <strong>Stock Real:</strong> Inventario sincronizado en tiempo real</span>
+
+          <!-- Repetición para ciclo ininterrumpido sin saltos visuales -->
+          <span class="marquee-item"><i class="bi bi-lightning-charge-fill"></i> <strong>Despacho Express:</strong> Entregas en 24h para Santiago y envíos a todo Chile</span>
+          <span class="marquee-item"><i class="bi bi-shield-lock-fill"></i> <strong>Reserva Asegurada:</strong> Stock reservado en tu carrito por 30 minutos</span>
+          <span class="marquee-item"><i class="bi bi-award-fill"></i> <strong>Garantía Oficial:</strong> 12 meses de garantía directa en todo el catálogo</span>
+          <span class="marquee-item"><i class="bi bi-credit-card-2-front-fill"></i> <strong>Cuotas Sin Interés:</strong> Hasta 12 cuotas con tus tarjetas bancarias</span>
+          <span class="marquee-item"><i class="bi bi-check-circle-fill"></i> <strong>Stock Real:</strong> Inventario sincronizado en tiempo real</span>
         </div>
       </div>
     </header>
@@ -85,13 +111,14 @@
                 :key="producto.id" 
                 class="product-item">
                 
-                <!-- Miniatura de imagen del producto -->
+                <!-- Miniatura de fotografía real del producto (74x74 con fallback seguro) -->
                 <div class="product-thumbnail-box">
                   <img 
                     :src="producto.imagen" 
                     :alt="'Fotografía de ' + producto.nombre" 
                     class="product-thumbnail" 
-                    loading="lazy">
+                    loading="lazy"
+                    @error="manejarErrorImagen($event, producto.nombre)">
                 </div>
 
                 <!-- Información del producto: <nombre> - Precio $: <precio> y Stock -->
@@ -169,13 +196,14 @@
                 :key="item.id" 
                 class="product-item">
                 
-                <!-- Miniatura de imagen del producto -->
+                <!-- Miniatura de fotografía real del producto en carrito (74x74 con fallback seguro) -->
                 <div class="product-thumbnail-box">
                   <img 
                     :src="item.imagen" 
                     :alt="'Fotografía de ' + item.nombre" 
                     class="product-thumbnail" 
-                    loading="lazy">
+                    loading="lazy"
+                    @error="manejarErrorImagen($event, item.nombre)">
                 </div>
 
                 <!-- Información del producto en carrito: <nombre> - Cantidad: <cantidad> -->
@@ -221,16 +249,127 @@
       </div>
     </main>
 
-    <!-- Pie de Página Institucional -->
+    <!-- ===================================================================
+         FOOTER MODERNO ORIENTADO A E-COMMERCE: EVAU3
+         =================================================================== -->
     <footer class="app-footer">
-      <div class="container text-center">
-        <p class="mb-1">
-          <strong>Evaluación Sumativa U3</strong> &bull; Programación Front End &bull; Unidad 3: Vue.js
-        </p>
-        <p class="mb-0 small text-secondary">
-          Desarrollado bajo estándares industriales de accesibilidad, seguridad y diseño responsivo.
-        </p>
+      
+      <!-- Franja superior de ticker promocional animado -->
+      <div class="footer-ticker-strip" aria-label="Beneficios de compra">
+        <div class="footer-ticker-track">
+          <span class="footer-ticker-item"><i class="bi bi-truck-front-fill"></i> Despacho Exprés en 24h a Todo Chile</span>
+          <span class="footer-ticker-item"><i class="bi bi-stopwatch-fill"></i> Reserva de Stock por 30 Minutos en tu Carrito</span>
+          <span class="footer-ticker-item"><i class="bi bi-patch-check-fill"></i> 100% Hardware Original con Garantía Oficial</span>
+          <span class="footer-ticker-item"><i class="bi bi-shield-check"></i> Pago Seguro y Encriptado SSL</span>
+          <span class="footer-ticker-item"><i class="bi bi-box-seam-fill"></i> Embalaje Reforzado Especial para Componentes</span>
+
+          <!-- Pista duplicada para ciclo continuo sin interrupciones -->
+          <span class="footer-ticker-item"><i class="bi bi-truck-front-fill"></i> Despacho Exprés en 24h a Todo Chile</span>
+          <span class="footer-ticker-item"><i class="bi bi-stopwatch-fill"></i> Reserva de Stock por 30 Minutos en tu Carrito</span>
+          <span class="footer-ticker-item"><i class="bi bi-patch-check-fill"></i> 100% Hardware Original con Garantía Oficial</span>
+          <span class="footer-ticker-item"><i class="bi bi-shield-check"></i> Pago Seguro y Encriptado SSL</span>
+          <span class="footer-ticker-item"><i class="bi bi-box-seam-fill"></i> Embalaje Reforzado Especial para Componentes</span>
+        </div>
       </div>
+
+      <!-- Contenido Principal del Footer -->
+      <div class="container footer-main">
+        <div class="row g-4 align-items-center">
+          
+          <!-- Columna Marca y Copy Comercial -->
+          <div class="col-12 col-lg-5">
+            <div class="footer-brand-title">
+              <i class="bi bi-cpu-fill text-primary"></i>
+              <span>EvaU3 <span class="brand-dot">&bull;</span> Hardware Store</span>
+            </div>
+            <p class="footer-description">
+              Especialistas en armado de setups, periféricos gaming y componentes de alta gama. Experiencia de compra fluida con reserva de inventario temporal y envíos prioritarios.
+            </p>
+            <div class="live-status-pill">
+              <span class="pulsing-dot" aria-hidden="true"></span>
+              <span>Tienda online activa &bull; Inventario sincronizado en tiempo real</span>
+            </div>
+          </div>
+
+          <!-- Columna Puntos de Confianza (Trust Points) -->
+          <div class="col-12 col-lg-7">
+            <div class="row g-3">
+              
+              <div class="col-12 col-sm-6">
+                <div class="trust-badge-item">
+                  <i class="bi bi-lightning-charge-fill trust-icon"></i>
+                  <div>
+                    <div class="trust-title">Despacho Exprés</div>
+                    <p class="trust-text">Despacho prioritario con código de seguimiento en tiempo real.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <div class="trust-badge-item">
+                  <i class="bi bi-hourglass-split trust-icon"></i>
+                  <div>
+                    <div class="trust-title">Reserva de 30 Minutos</div>
+                    <p class="trust-text">Bloqueo automático de stock mientras completas tu orden.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <div class="trust-badge-item">
+                  <i class="bi bi-shield-check trust-icon"></i>
+                  <div>
+                    <div class="trust-title">Garantía Directa</div>
+                    <p class="trust-text">12 meses de cobertura y soporte técnico especializado.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <div class="trust-badge-item">
+                  <i class="bi bi-credit-card-fill trust-icon"></i>
+                  <div>
+                    <div class="trust-title">Pago Flexible</div>
+                    <p class="trust-text">Hasta 12 cuotas sin interés mediante pasarela bancaria.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Barra Inferior de Créditos y Stack Tecnológico con Elevación -->
+      <div class="footer-bottom">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+          <div>
+            &copy; 2026 <strong>EvaU3 Hardware & Setup</strong> &bull; Evaluación U3 &bull; Front End Development
+          </div>
+          
+          <!-- Stack Tecnológico con Hover Elevation -->
+          <div class="tech-badge-group">
+            <span class="small text-secondary me-1">Construido con:</span>
+            
+            <!-- Badge Vue.js con SVG Oficial -->
+            <div class="tech-badge" title="Desarrollado con Vue.js 3">
+              <svg viewBox="0 0 261.76 226.69" width="16" height="16" aria-hidden="true" focusable="false">
+                <path d="M161.096.001l-30.225 52.351L100.647.001H-.005l130.877 226.688L261.749.001z" fill="#41b883"/>
+                <path d="M161.096.001l-30.225 52.351L100.647.001H52.61l78.262 135.551L209.133.001z" fill="#34495e"/>
+              </svg>
+              <span>Vue.js 3</span>
+            </div>
+
+            <!-- Badge Bootstrap 5 con Ícono Oficial -->
+            <div class="tech-badge" title="Maquetado con Bootstrap 5.3">
+              <i class="bi bi-bootstrap-fill" style="color: #7952B3; font-size: 1.05rem;"></i>
+              <span>Bootstrap 5.3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </footer>
 
   </div>

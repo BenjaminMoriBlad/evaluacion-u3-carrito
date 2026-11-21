@@ -35,29 +35,110 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Header Académico y Barra de Título */
+/* Header Comercial y Barra de Título: EvaU3 */
 .app-header {
-  background: linear-gradient(135deg, var(--brand-primary) 0%, #0F233E 100%);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #0B192C 100%);
   color: #FFFFFF;
-  padding: 2.2rem 1rem;
+  padding: 1.8rem 1rem 0 1rem;
   border-bottom: 4px solid var(--brand-accent);
   box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand-accent) 0%, #7A89FE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(85, 104, 254, 0.4);
 }
 
 .app-header h1 {
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 0.35rem;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin-bottom: 0.2rem;
+  font-size: 1.85rem;
 }
 
-.badge-tag {
-  background-color: rgba(85, 104, 254, 0.25);
-  border: 1px solid rgba(85, 104, 254, 0.6);
-  color: #FFFFFF;
-  font-weight: 600;
-  padding: 0.35rem 0.85rem;
-  border-radius: 20px;
+.app-header h1 .brand-accent {
+  color: #A3E635;
+}
+
+.brand-subtitle {
+  color: #CBD5E1;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Marquesina Animada Continua en Header (CSS @keyframes) */
+.header-marquee {
+  background: rgba(11, 25, 44, 0.75);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(85, 104, 254, 0.35);
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0.65rem 0;
+  margin-top: 1.25rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.header-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.75rem;
   font-size: 0.85rem;
+  font-weight: 500;
+  color: #E2E8F0;
+}
+
+.marquee-item strong {
+  color: #FFFFFF;
+}
+
+.marquee-item i {
+  color: #A3E635;
+  font-size: 0.95rem;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
 
 /* Contenedor de Columna / Panel Principal */
@@ -111,25 +192,33 @@ body {
   transform: translateY(-2px);
 }
 
-/* Miniatura de Imagen de Producto */
+/* Miniatura de Imagen de Producto (Fotos Reales de Hardware 74px x 74px) */
 .product-thumbnail-box {
-  width: 62px;
-  height: 62px;
-  min-width: 62px;
-  border-radius: 10px;
-  background-color: #F8FAFC;
+  width: 74px;
+  height: 74px;
+  min-width: 74px;
+  border-radius: 12px;
+  background-color: #F1F5F9;
   border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 6px;
+  padding: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .product-thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 11px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.product-item:hover .product-thumbnail {
+  transform: scale(1.05);
 }
 
 /* Información de Producto */
@@ -329,14 +418,204 @@ body {
   background-color: rgba(229, 62, 62, 0.1);
 }
 
-/* Footer Académico */
+/* ==========================================================================
+   FOOTER MODERNO ORIENTADO A E-COMMERCE CON MOVIMIENTO Y STACK ICONS
+   ========================================================================== */
 .app-footer {
   margin-top: auto;
-  background-color: #FFFFFF;
-  border-top: 1px solid var(--border-subtle);
-  padding: 1.25rem 0;
-  color: var(--text-muted);
+  background-color: #0F172A;
+  color: #94A3B8;
+  border-top: 1px solid #1E293B;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Franja animada de ticker promocional superior en el footer */
+.footer-ticker-strip {
+  background: linear-gradient(90deg, #1B365D 0%, #0F233E 50%, #1B365D 100%);
+  border-bottom: 1px solid rgba(85, 104, 254, 0.25);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.6rem 0;
+  user-select: none;
+}
+
+.footer-ticker-track {
+  display: inline-flex;
+  width: max-content;
+  animation: footer-ticker-scroll 24s linear infinite;
+}
+
+.footer-ticker-strip:hover .footer-ticker-track {
+  animation-play-state: paused;
+}
+
+.footer-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  letter-spacing: 0.3px;
+}
+
+.footer-ticker-item i {
+  color: #A3E635;
+  font-size: 0.95rem;
+}
+
+@keyframes footer-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-ticker-track {
+    animation: none;
+  }
+}
+
+/* Contenido Principal del Footer */
+.footer-main {
+  padding: 2.75rem 0 1.5rem 0;
+}
+
+.footer-brand-title {
+  color: #FFFFFF;
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.footer-brand-title .brand-dot {
+  color: #A3E635;
+}
+
+.footer-description {
+  color: #94A3B8;
   font-size: 0.88rem;
+  line-height: 1.6;
+  max-width: 440px;
+}
+
+/* Indicador de Estado en Vivo (Pulsing Dot) */
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  color: #E2E8F0;
+  margin-top: 0.85rem;
+}
+
+.pulsing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Tarjetas de Puntos de Confianza (Trust Badges) */
+.trust-badge-item {
+  background-color: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: var(--transition);
+}
+
+.trust-badge-item:hover {
+  background-color: rgba(30, 41, 59, 0.95);
+  border-color: rgba(85, 104, 254, 0.4);
+  transform: translateY(-2px);
+}
+
+.trust-icon {
+  font-size: 1.35rem;
+  color: #5568FE;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.trust-title {
+  color: #F1F5F9;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.15rem;
+}
+
+.trust-text {
+  color: #94A3B8;
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+/* Barra Inferior de Créditos y Stack Tecnológico con Elevación Hover */
+.footer-bottom {
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 1.25rem 0;
+  font-size: 0.82rem;
+  color: #64748B;
+}
+
+.tech-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  background-color: #1E293B;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  color: #F1F5F9;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tech-badge:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand-accent);
+  box-shadow: 0 6px 14px rgba(85, 104, 254, 0.25);
+  color: #FFFFFF;
+}
+
+.tech-badge svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Responsive Utilities */

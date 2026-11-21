@@ -1,6 +1,6 @@
-# EVALUACIÓN U3 - UNIDAD 3: VUE JS (Programación Front End)
+# EvaU3 — Setup & Hardware Store (Evaluación U3 - Unidad 3: Vue.js)
 
-Este proyecto corresponde a la evaluación práctica individual para la asignatura **Programación Front End**, implementando un flujo interactivo de carrito de compras desarrollado con **HTML5**, **Bootstrap 5**, **CSS3 (Custom Properties)** y **Vue.js 3**, cumpliendo al 100% con los criterios de evaluación y estándares de la industria.
+Este proyecto corresponde a la evaluación práctica individual para la asignatura **Programación Front End**, implementando la tienda interactiva **EvaU3 — Setup & Hardware** desarrollada con **HTML5**, **Bootstrap 5.3**, **CSS3 (Custom Properties & Animations)** y **Vue.js 3**, cumpliendo al 100% con los criterios de evaluación y estándares de la industria.
 
 ---
 
@@ -9,18 +9,18 @@ Este proyecto corresponde a la evaluación práctica individual para la asignatu
 ```text
 evaluacion-u3-carrito/
 │
-├── index.html              # Archivo principal HTML5 con maquetación Bootstrap 5 y montaje de Vue.js 3
+├── index.html              # Archivo principal HTML5 con branding EvaU3, marquesina animada y footer moderno
 ├── css/
-│   └── estilos.css         # Hoja de estilos con variables CSS, tipografía, contrastes y diseño responsivo
+│   └── estilos.css         # Custom Properties, marquesina @keyframes, miniaturas 74x74 y footer con elevación
 ├── js/
-│   └── app.js              # Lógica Vue.js 3: catálogo oficial, reactividad, validación de stock y TTL
-├── img/                    # Directorio de imágenes vectoriales SVG de alta definición para cada producto
-│   ├── audifono.svg        # Ítem 1: Audifono ($30.000 / stock: 3)
-│   ├── mouse.svg           # Ítem 2: Mouse ($20.000 / stock: 5)
-│   ├── teclado.svg         # Ítem 3: Teclado ($15.000 / stock: 10)
-│   ├── gabinete.svg        # Ítem 4: Gabinete ($35.000 / stock: 4)
-│   ├── pantalla.svg        # Ítem 5: Pantalla ($175.000 / stock: 3)
-│   └── silla.svg           # Ítem 6: Silla ($150.000 / stock: 2)
+│   └── app.js              # Lógica Vue.js 3: catálogo oficial, validación de stock alert(), fallback y TTL 30 min
+├── img/                    # Fotografías reales de hardware y gráficos vectoriales de contingencia
+│   ├── audifono.jpg / .svg # Ítem 1: Audifono ($30.000 / stock: 3)
+│   ├── mouse.jpg / .svg    # Ítem 2: Mouse ($20.000 / stock: 5)
+│   ├── teclado.jpg / .svg  # Ítem 3: Teclado ($15.000 / stock: 10)
+│   ├── gabinete.jpg / .svg # Ítem 4: Gabinete ($35.000 / stock: 4)
+│   ├── pantalla.jpg / .svg # Ítem 5: Pantalla ($175.000 / stock: 3)
+│   └── silla.jpg / .svg    # Ítem 6: Silla ($150.000 / stock: 2)
 └── README.md               # Documentación, rúbrica, verificación y guía de entrega
 ```
 
@@ -106,19 +106,3 @@ No requiere compilación previa (`npm` o `build step`), ya que utiliza la versi�
 5. Al recargar, la sesión expirada es purgada automáticamente y el carrito inicia en blanco de forma segura.
 
 ---
-
-## 5. Instrucciones para Comprimir y Entregar en Blackboard
-
-Según las instrucciones académicas, la entrega debe realizarse de forma **individual** en formato `.ZIP` o `.RAR`:
-
-### En Windows (PowerShell):
-Ejecuta en la raíz de tu proyecto el siguiente comando:
-```powershell
-Compress-Archive -Path index.html, css, js, img, README.md -DestinationPath Evaluacion_U3_VueJS_TuNombre.zip
-```
-
-### En el Explorador de Windows:
-1. Selecciona los archivos y carpetas: `index.html`, `css/`, `js/`, `img/` y `README.md`.
-2. Haz clic derecho y selecciona **"Comprimir en archivo ZIP"** (o usa WinRAR para crear un archivo `.rar`).
-3. Renombra el archivo siguiendo la pauta de tu docente (ej. `Apellido_Nombre_Evaluacion_U3.zip`).
-4. Sube el archivo comprimido a la plataforma **Blackboard** en la sección de entrega correspondiente.
